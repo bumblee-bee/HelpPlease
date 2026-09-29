@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help Please</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background-shape shape-one"></div>
+<div class="background-shape shape-two"></div>
+
+<section id="authSection" class="auth-section">
+    <div class="brand">
+        <div class="brand-eyes">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="brand-name">Help Please</div>
+    </div>
+
+    <div class="auth-card">
+        <div class="auth-heading">
+            <h1>Help Please</h1>
+            <p>Someone needs help. Someone can help.</p>
+        </div>
+
+        <div class="auth-tabs">
+            <button id="loginTab" class="active">Login</button>
+            <button id="registerTab">Register</button>
+            <button id="volunteerTab">Volunteer</button>
+        </div>
+
+        <form id="loginForm">
+            <label>Email</label>
+            <input id="loginEmail" type="email" required>
+
+            <label>Password</label>
+            <input id="loginPassword" type="password" required>
+
+            <button class="primary-button" type="submit">Login</button>
+        </form>
+        <button
+    type="button"
+    id="forgotPasswordLink"
+    class="link-button"
+>
+    Forgot Password?
+</button>
+        <div id="forgotPasswordBox" class="auth-box">
+    <h2>Forgot Password</h2>
+
+    <form id="forgotPasswordForm">
+        <input
+            type="email"
+            id="forgotEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+        <button type="submit">
+            Send Reset Link
+        </button>
+    </form>
+
+    <button
+        type="button"
+        id="backToLoginBtn"
+        class="secondary-button"
+    >
+        Back to Login
+    </button>
+</div>
+<div id="googleLoginBox">
+    <div
+        id="g_id_onload"
+        data-client_id="YOUR_GOOGLE_CLIENT_ID"
+        data-callback="handleGoogleLogin"
+        data-auto_prompt="false">
+    </div>
+
+    <div
+        class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="signin_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+    </div>
+</div>
+
+        <form id="registerForm" class="hidden">
+            <label>Name</label>
+            <input id="registerName" type="text" required>
+
+            <label>Email</label>
+            <input id="registerEmail" type="email" required>
+
+            <label>Password</label>
+            <input id="registerPassword" type="password" required>
+
+            <button class="primary-button" type="submit">Create Account</button>
+        </form>
+
+        <form id="volunteerForm" class="hidden">
+            <label>Name</label>
+            <input id="volunteerName" type="text" required>
+
+            <label>Email</label>
+            <input id="volunteerEmail" type="email" required>
+
+            <label>Password</label>
+            <input id="volunteerPassword" type="password" required>
+
+            <label>Phone</label>
+            <input id="volunteerPhone" type="text">
+
+            <button class="primary-button" type="submit">Become a Volunteer</button>
+        </form>
+
+        <div id="message"></div>
+    </div>
+</section>
+
+<section id="appSection" class="app-section hidden">
+
+    <header class="topbar">
+        <div class="topbar-brand">
+            <div class="mini-eyes">
+                <span></span>
+                <span></span>
+            </div>
+            <strong>Help Please</strong>
+        </div>
+
+        <div class="topbar-user">
+            <span id="userInfo"></span>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard">
+
+        <section id="profileCard" class="profile-card"></section>
+
+        <section id="requestHelpCard" class="help-create-card">
+            <div class="section-heading">
+                <span>NEED HELP</span>
+                <h1>Request Help</h1>
+                <p>Tell nearby volunteers what you need.</p>
+            </div>
+
+            <form id="helpForm">
+                <label>What help do you need?</label>
+                <textarea id="taskDescription" required></textarea>
+
+                <label>Location</label>
+                <input id="locationText" type="text" required>
+
+                <div class="location-grid">
+                    <div>
+                        <label>Latitude</label>
+                        <input id="latitude" type="number" step="any">
+                    </div>
+
+                    <div>
+                        <label>Longitude</label>
+                        <input id="longitude" type="number" step="any">
+                    </div>
+                </div>
+
+                <button type="button" class="secondary-button" onclick="getUserLocation()">
+                    Use My Location
+                </button>
+
+                <button class="primary-button" type="submit">
+                    Send Help Request
+                </button>
+            </form>
+        </section>
+
+        <section class="requests-section">
+            <div class="section-heading">
+                <span id="requestsEyebrow">REQUESTS</span>
+                <h1 id="requestsTitle">My Help Requests</h1>
+            </div>
+
+            <div id="requestsList"></div>
+        </section>
+
+    </main>
+</section>
+
+<div id="chatPanel" class="chat-panel hidden">
+    <div class="chat-window">
+        <div class="chat-header">
+            <div>
+                <span>HELP PLEASE</span>
+                <h2>Chat</h2>
+            </div>
+            <button onclick="closeChat()">Close</button>
+        </div>
+
+        <div id="chatMessages" class="chat-messages"></div>
+
+        <div class="chat-disabled">
+            Chat sending will be enabled after the chat API is connected.
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
